@@ -1,0 +1,65 @@
+<h3>Create Employee</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name"  required minlength="4" [(ngModel)]="employee.name"  #name="ngModel">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert">
+
+  <div class="error" *ngIf="name.errors?.required">
+   *Name is required.
+  </div>
+  <div class="error" *ngIf="name.errors?.minlength">
+   *Name must be at least 4 characters long.
+  </div>
+  
+
+</div>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Email Id</label>
+      <input type="text" class="form-control" id="email"  [(ngModel)]="employee.email" name="prmEmail" required email #prmEmail="ngModel" >
+      <div *ngIf="prmEmail.invalid && (prmEmail.dirty || prmEmail.touched)"
+      class="alert">
+      <div class="error" *ngIf="prmEmail.errors?.email"> 
+       *Primary Email not valid.
+      </div> 
+      <div class="error" *ngIf="name.errors?.required">
+       *Email is required.
+      </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Phone number</label>
+      <input type="text" class="form-control" id="phone"  [(ngModel)]="employee.phone" name="phone" required minlength="10" maxlength="10" #nphone="ngModel">
+      <div *ngIf="nphone.invalid && (nphone.dirty || nphone.touched)"
+      class="alert">
+      <div class="error" *ngIf="nphone.errors?.minlength"> 
+        *Not a valid number
+   </div> 
+<div class="error" *ngIf="nphone.errors?.required">
+ *Phone no is required!
+</div>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="name">Department</label>
+      <input type="text" class="form-control" id="department"  [(ngModel)]="employee.department" name="department" required minlength="2" #department="ngModel">
+      <div *ngIf="department.invalid && (department.dirty || department.touched)"
+      class="alert">
+      <div class="error" *ngIf="department.errors?.minlength"> 
+       *Please Enter Valid Department 
+   </div> 
+   <div class="error" *ngIf="department.errors?.required">
+    *Department name is required.
+  </div>
+    </div>
+    </div>
+
+    <button class="btn btn-success">Submit</button>
+  </form>
+</div>
+
